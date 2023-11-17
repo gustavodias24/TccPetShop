@@ -1,21 +1,31 @@
 package benicio.soluces.tccpetshop.model;
 
 public class ProductModel {
-    String nome, lojaId, id;
+    String nome, imagem,categoria;
+    int id, lojaId;
     float valor;
-    int categoria, quanti, quanti_vend;
+    int quanti, quantiVenda;
 
     public ProductModel() {
     }
 
-    public ProductModel(String nome, String lojaId, String id, float valor, int categoria, int quanti, int quanti_vend) {
+    public ProductModel(String nome, int lojaId, int id, String imagem, float valor, String categoria, int quanti, int quantiVenda) {
         this.nome = nome;
         this.lojaId = lojaId;
         this.id = id;
+        this.imagem = imagem;
         this.valor = valor;
         this.categoria = categoria;
         this.quanti = quanti;
-        this.quanti_vend = quanti_vend;
+        this.quantiVenda = quantiVenda;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public String getNome() {
@@ -26,19 +36,19 @@ public class ProductModel {
         this.nome = nome;
     }
 
-    public String getLojaId() {
+    public int getLojaId() {
         return lojaId;
     }
 
-    public void setLojaId(String lojaId) {
+    public void setLojaId(int lojaId) {
         this.lojaId = lojaId;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,11 +60,11 @@ public class ProductModel {
         this.valor = valor;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -66,11 +76,11 @@ public class ProductModel {
         this.quanti = quanti;
     }
 
-    public int getQuanti_vend() {
-        return quanti_vend;
+    public int getquantiVenda() {
+        return quantiVenda;
     }
 
-    public void setQuanti_vend(int quanti_vend) {
-        this.quanti_vend = quanti_vend;
+    public void setquantiVenda(int quantiVenda) {
+        this.quantiVenda = quantiVenda;
     }
 }

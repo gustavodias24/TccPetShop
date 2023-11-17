@@ -2,13 +2,15 @@ package benicio.soluces.tccpetshop.model;
 
 public class StoreModel {
 
-    String nomeLoja, id;
-    float raio;
+    String nomeLoja;
+
+    int id;
+    int raio;
 
     public StoreModel() {
     }
 
-    public StoreModel(String nomeLoja, String id, float raio) {
+    public StoreModel(String nomeLoja, int id, int raio) {
         this.nomeLoja = nomeLoja;
         this.id = id;
         this.raio = raio;
@@ -22,19 +24,19 @@ public class StoreModel {
         this.nomeLoja = nomeLoja;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public float getRaio() {
+    public int getRaio() {
         return raio;
     }
 
-    public void setRaio(float raio) {
+    public void setRaio(int raio) {
         this.raio = raio;
     }
 }

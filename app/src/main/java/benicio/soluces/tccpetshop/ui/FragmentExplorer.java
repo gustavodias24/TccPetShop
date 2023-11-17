@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.adapter.AdapterProdutos;
@@ -66,13 +67,38 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> {
 
             }
         });
+
+        binding.seeAllPopularProduct.setOnClickListener(view -> {
+            refProduct.addListenerForSingleValueEvent(new ValueEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()){
+                        produtos.clear();
+
+                        for ( DataSnapshot dado : snapshot.getChildren() ){
+                            produtos.add(dado.getValue(ProductModel.class));
+                        }
+                        adapter.notifyDataSetChanged();
+                        binding.layoutPopular.setVisibility(View.GONE);
+                        binding.recyclerProdutos.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
     }
     private void configurarRecyclerView(){
         r = getBinding().recyclerProdutos;
-        r.setLayoutManager(new LinearLayoutManager(getActivity()));
-        r.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        r.setLayoutManager(new LinearLayoutManager(getContext()));
+        r.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
         adapter = new AdapterProdutos(produtos);
+        r.setAdapter(adapter);
     }
     private void filtrarDados(String texto) {
 

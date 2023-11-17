@@ -1,7 +1,9 @@
 package benicio.soluces.tccpetshop.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +20,17 @@ import benicio.soluces.tccpetshop.model.StoreModel;
 public class AdapterStores extends RecyclerView.Adapter<AdapterStores.MyViewHolder>{
 
     List<StoreModel> stores;
+    Context context;
 
-    public AdapterStores(List<StoreModel> stores) {
+    public AdapterStores(List<StoreModel> stores, Context context) {
         this.stores = stores;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.exibicao_info_layout, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.exibicao_info_layout, parent, false));
     }
 
     @SuppressLint("DefaultLocale")
@@ -36,9 +40,10 @@ public class AdapterStores extends RecyclerView.Adapter<AdapterStores.MyViewHold
 
         holder.infos.setText(
                 String.format(
-                        "%s\nRaio de distância: %.2f", store.getNomeLoja(), store.getRaio()
+                        "%s\nRaio de distância: %dm", store.getNomeLoja(), store.getRaio()
                 )
         );
+
     }
 
     @Override
@@ -46,7 +51,7 @@ public class AdapterStores extends RecyclerView.Adapter<AdapterStores.MyViewHold
         return stores.size();
     }
 
-    public class MyViewHolder extends  RecyclerView.ViewHolder {
+    public static class MyViewHolder extends  RecyclerView.ViewHolder {
 
         TextView infos;
         public MyViewHolder(@NonNull View itemView) {
