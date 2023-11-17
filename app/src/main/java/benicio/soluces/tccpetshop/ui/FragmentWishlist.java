@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import benicio.soluces.tccpetshop.R;
@@ -31,7 +32,7 @@ public class FragmentWishlist extends BaseFragment<FragmentWishListBinding> impl
     DatabaseReference refPedidos = FirebaseDatabase.getInstance().getReference().child("history_table");
     AdapterOrdes adapterOrdes;
     RecyclerView r;
-    List<OrderModel> orders;
+    List<OrderModel> orders = new ArrayList<>();
     public FragmentWishlist() { super(R.layout.fragment_wish_list, FragmentWishListBinding::bind); }
 
     @Override

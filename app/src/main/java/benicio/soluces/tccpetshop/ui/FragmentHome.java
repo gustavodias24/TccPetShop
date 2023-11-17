@@ -36,6 +36,8 @@ public class FragmentHome extends BaseFragment<FragmentHomeBinding> implements
             fragment = new FragmentWishlist();
         }else if (v.getItemId() == R.id.btn_profile){
             fragment = new FragmentSettings();
+        }else if ( v.getItemId() == R.id.btn_lojas_proximas){
+            fragment = new FragmentLojas();
         }
         inflateFragment(fragment);
         return false;
