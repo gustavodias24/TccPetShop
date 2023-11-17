@@ -27,7 +27,7 @@ import benicio.soluces.tccpetshop.model.OrderModel;
 public class FragmentWishlist extends BaseFragment<FragmentWishListBinding> implements
         View.OnClickListener {
 
-    SharedPreferences preferences = requireContext().getSharedPreferences("usuario", Context.MODE_PRIVATE);
+    SharedPreferences preferences ;
     DatabaseReference refPedidos = FirebaseDatabase.getInstance().getReference().child("history_table");
     AdapterOrdes adapterOrdes;
     RecyclerView r;
@@ -38,6 +38,7 @@ public class FragmentWishlist extends BaseFragment<FragmentWishListBinding> impl
     public void onBindCreated(FragmentWishListBinding binding) {
         binding.btnBack.setOnClickListener(v -> popBackStack());
         cconfigurarRecycler();
+        preferences = getContext().getSharedPreferences("usuario", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -73,9 +74,9 @@ public class FragmentWishlist extends BaseFragment<FragmentWishListBinding> impl
 
     private void cconfigurarRecycler(){
         r = getBinding().recyclerPedidos;
-        r.setLayoutManager(new LinearLayoutManager(getContext()));
-        r.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        r.setLayoutManager(new LinearLayoutManager(getActivity()));
+        r.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
-        adapterOrdes = new AdapterOrdes(orders, getContext());
+        adapterOrdes = new AdapterOrdes(orders,getActivity());
     }
 }
