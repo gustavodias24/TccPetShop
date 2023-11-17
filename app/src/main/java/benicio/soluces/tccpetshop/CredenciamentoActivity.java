@@ -65,13 +65,14 @@ public class CredenciamentoActivity extends AppCompatActivity {
                                     Toast.makeText(CredenciamentoActivity.this, "Bem-vindo de volta!", Toast.LENGTH_SHORT).show();
                                     startActivity( new Intent(getApplicationContext(), MainActivity.class));
                                     editor.putString("idUsuario", clientModel.getId());
+                                    editor.apply();
                                     finish();
                                     ce = true;
                                 }
                             }
                         }
                         if ( !ce ){
-                            Toast.makeText(CredenciamentoActivity.this, "Credenciais não encontradas", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CredenciamentoActivity.this, "Credenciais erradas.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

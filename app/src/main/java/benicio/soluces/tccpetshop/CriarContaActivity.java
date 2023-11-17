@@ -22,8 +22,9 @@ import benicio.soluces.tccpetshop.model.ClientModel;
 public class CriarContaActivity extends AppCompatActivity {
 
     ActivityCriarContaBinding mainBinding;
-    SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    SharedPreferences preferences;
+
     DatabaseReference refCliente = FirebaseDatabase.getInstance().getReference().child("user_table");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
