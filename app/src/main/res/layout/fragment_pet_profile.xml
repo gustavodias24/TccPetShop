@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_black_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="23sp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/edit_pen"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="55dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="NotSibling">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="sans-serif"
+                android:lineHeight="25dp"
+                android:text="@string/tv_pet_title"
+                android:textColor="@color/black_text"
+                android:textFontWeight="500"
+                android:textSize="23sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:lineHeight="25dp"
+                android:text="@string/tv_pet_name"
+                android:textColor="@color/black_text"
+                android:textFontWeight="500"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/et_pet_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:lineHeight="25dp"
+                android:text="@string/tv_pet_photo"
+                android:textColor="@color/black_text"
+                android:textFontWeight="500"
+                android:textSize="18sp" />
+            <LinearLayout
+                android:id="@+id/ll_image_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_pet_picture"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/tv_add_image_file"
+                    android:textColor="@color/grey_text"
+                    android:textSize="16sp" />
+                <Button
+                    android:id="@+id/btn_add_image_file"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/default_button"
+                    android:backgroundTint="@color/grey_button_background"
+                    android:fontFamily="sans-serif"
+                    android:lineHeight="19dp"
+                    android:text="@string/btn_add_photo"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_text"
+                    android:textFontWeight="500"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_floor_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineHeight="25dp"
+                    android:text="@string/tv_birth_date"
+                    android:textColor="@color/black_text"
+                    android:textFontWeight="500"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/tv_hint_data_nascimento"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineHeight="25dp"
+                    android:text="@string/tv_type"
+                    android:textColor="@color/black_text"
+                    android:textFontWeight="500"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/et_pet_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineHeight="25dp"
+                    android:text="@string/tv_alergia"
+                    android:textColor="@color/black_text"
+                    android:textFontWeight="500"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/et_pet_alergia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineHeight="25dp"
+                    android:text="@string/tv_porte"
+                    android:textColor="@color/black_text"
+                    android:textFontWeight="500"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/et_pet_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+                <Button
+                    android:id="@+id/btn_register_pet"
+                    android:layout_width="150dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="60dp"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="20dp"
+                    android:lineHeight="19dp"
+                    android:textAllCaps="false"
+                    android:textFontWeight="500"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/white_text"
+                    android:background="@drawable/default_button"
+                    android:backgroundTint="@color/blue_button_background" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

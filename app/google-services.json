@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "168838738575",
+    "firebase_url": "https://ipetdb-default-rtdb.firebaseio.com",
+    "project_id": "ipetdb",
+    "storage_bucket": "ipetdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168838738575:android:a0c7bfe7446073e77b76fa",
+        "android_client_info": {
+          "package_name": "benicio.soluces.tccpetshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168838738575-mfhs0f1dnt39m0nqtb6358ka9qv4k1lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGndjq2MLyF8b5w8Stcs7vwb1DuscdGy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168838738575-mfhs0f1dnt39m0nqtb6358ka9qv4k1lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

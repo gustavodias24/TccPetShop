@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">IPetShopping</string>
+
+    <!-- Fragment Home Menu -->
+    <string name="menu_explorer">Explorer</string>
+    <string name="menu_wish_list">Wishlist</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_profile">Profile</string>
+
+    <!-- Fragment Explorer -->
+    <string name="welcome_message">Welcome</string>
+    <string name="user_name">user name</string>
+    <string name="popular_category">Explore popular category</string>
+    <string name="medicine">Medicine</string>
+    <string name="toys">Toys</string>
+    <string name="food">Food</string>
+    <string name="view_all">ViewAll</string>
+    <string name="popular_product">Popular Product</string>
+    <string name="see_all_popular_product">See All</string>
+
+    <!-- CardView -->
+    <string name="search_message">Search anything</string>
+    <string name="search_medicine">Medicine</string>
+
+    <!-- Fragment Access Control -->
+    <string name="tv_login">Login:</string>
+    <string name="tv_login_hint">guilherme.s</string>
+    <string name="tv_password">Senha:</string>
+    <string name="tv_password_hint">1234</string>
+    <string name="tv_title_access">Acesse sua conta</string>
+    <string name="tv_access">Entrar</string>
+    <string name="tv_create_account">Criar uma conta</string>
+
+    <!-- Fragment Settings -->
+    <string name="client_profile">Perfil Cliente</string>
+    <string name="pet_profile">Perfil Animal de estimacao</string>
+    <string name="payment">Formas de pagamento</string>
+    <string name="log_out">Sair</string>
+
+    <!-- Fragment Client Profile -->
+    <string name="tv_header_1_name">1. Nome Do Usuario:</string>
+    <string name="tv_header_2_image_file">2. Foto de perfil:</string>
+    <string name="tv_header_3_cpf">3. Cpf:</string>
+    <string name="tv_header_4_data_nascimento">4. Data de nascimento:</string>
+    <string name="tv_header_5_email">5. Email:</string>
+    <string name="tv_header_6_numero">6. Telefone:</string>
+    <string name="tv_header_7_endereco">7. Endereço:</string>
+    <string name="tv_header_8_endereco_numero">8. Numero:</string>
+    <string name="tv_header_9_endereco_numero">9. Ponto de referencia:</string>
+    <string name="tv_header_10_cep">10. CEP:</string>
+    <string name="tv_hint_floor_name">Nome social</string>
+    <string name="tv_add_image_file">Foto de perfil</string>
+    <string name="tv_hint_cpf">485.054.099.33</string>
+    <string name="tv_hint_data_nascimento">12/05/1998</string>
+    <string name="tv_hint_email">seuNome@gmail.com</string>
+    <string name="tv_hint_numero">19998153425</string>
+    <string name="tv_hint_endereco">Rua Eduardo filho salgado</string>
+    <string name="tv_hint_endereco_numero">466</string>
+    <string name="tv_hint_ponto_referencia">Perto da Puc Campinas</string>
+    <string name="tv_hint_cep">13087470</string>
+    <string name="add_tv_login">11. Login:</string>
+    <string name="add_tv_senha">12. Senha:</string>
+    <string name="btn_save">Salvar</string>
+    <string name="btn_comprar">Comprar</string>
+    <string name="btn_add">Cadastrar</string>
+    <string name="valor">total</string>
+    <string name="btn_add_photo">FOTO</string>
+    <string name="btn_cancel">Cancelar</string>
+
+    <!-- Fragment Pet Profile -->
+    <string name="tv_pet_title">Perfil Do Pet:</string>
+    <string name="add_tv_pet_title">Cadastro Do Pet:</string>
+    <string name="tv_pet_name">1. Nome Do Pet:</string>
+    <string name="tv_pet_photo">2. Foto do pet:</string>
+    <string name="tv_birth_date">3. Data de nascimento:</string>
+    <string name="tv_type">4. Raça:</string>
+    <string name="tv_alergia">5. Alergias:</string>
+    <string name="tv_porte">6. Porte:</string>
+
+    <!-- Fragment Payment -->
+    <string name="cadastro_pagamento">Formas de pagamento</string>
+    <string name="nome_cartao">Nome do titular do cartao</string>
+    <string name="numero_cartao">Numero do cartao</string>
+    <string name="cod_seguranca_cartao">Codigo de segurança</string>
+    <string name="cartao_validade">Data de validade</string>
+    <string name="input_incorreto">Dados inseridos incosistentes</string>
+    <string name="add_new_payment_card">Adicionar nova forma de pagamento</string>
+
+    <!-- Payment Adapter -->
+    <string name="card_type">Tipo do cartao</string>
+    <string name="card_bandeira">Bandeira</string>
+    <string name="card_information">5507056932561458</string>
+
+    <!-- Fragment History -->
+    <string name="history_title">Historico</string>
+    <string name="history_time">Sex. 22 setembro 2023</string>
+    <string name="store_name">Emporio da Vila Restaurante</string>
+    <string name="order_finished">Pedido concluido</string>
+    <string name="btn_help">Ajuda</string>
+    <string name="btn_buy_again">Adicionar na sacola</string>
+
+
+</resources>

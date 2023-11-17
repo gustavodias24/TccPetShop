@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:gravity="start|center"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/img_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_card"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="3dp"
+            android:layout_marginStart="5dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/card_type"
+            android:textColor="@color/black"
+            android:layout_marginStart="15dp"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@+id/img_card"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtBandeira"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/card_bandeira"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_marginStart="10dp"
+            android:text="@string/card_bandeira"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        <TextView
+            android:id="@+id/txtCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/card_bandeira"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_marginStart="10dp"
+            android:text="@string/card_information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtBandeira" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
