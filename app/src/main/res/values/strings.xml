@@ -101,5 +101,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="zapzap">https://api.whatsapp.com/send/?phone=5519988495979&amp;text=Ol%C3%A1%2C+vim+pelo+aplicativo+do+petShop+e+preciso+de+sua+ajuda%21&amp;type=phone_number&amp;app_absent=0</string>
 
 </resources>

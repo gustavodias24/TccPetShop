@@ -1,12 +1,15 @@
 package benicio.soluces.tccpetshop.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,13 +20,18 @@ import java.util.List;
 
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.model.ProductModel;
+import benicio.soluces.tccpetshop.utils.CarrinhoUtils;
 
 public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.myViewHolder>{
 
     List<ProductModel> produtos;
+    Context c;
+    Boolean clicavel;
 
-    public AdapterProdutos(List<ProductModel> produtos) {
+    public AdapterProdutos(List<ProductModel> produtos, Context c, Boolean clicavel) {
         this.produtos = produtos;
+        this.c = c;
+        this.clicavel = clicavel;
     }
 
     @NonNull
@@ -42,6 +50,17 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.myView
         holder.infos.setText(String.format(
                 "%s\n%d disponíveis\nR$%.2f", productModel.getNome(), productModel.getQuanti(),productModel.getValor()
         ));
+
+        if ( clicavel ){
+            holder.itemView.getRootView().setOnClickListener( view -> {
+                Log.d("aquiaqui", "onBindViewHolder: " + "adicicado");
+                Toast.makeText(c, "Adicionado ao carrinho", Toast.LENGTH_LONG).show();
+                List<ProductModel> listaAntiga = CarrinhoUtils.returnCarrinho(c);
+                listaAntiga.add(productModel);
+                CarrinhoUtils.saveCarrinho(listaAntiga, c);
+            });
+        }
+
     }
 
     @Override

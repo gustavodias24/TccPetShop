@@ -97,7 +97,7 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> {
         r.setLayoutManager(new LinearLayoutManager(getContext()));
         r.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
-        adapter = new AdapterProdutos(produtos);
+        adapter = new AdapterProdutos(produtos, getContext(), true);
         r.setAdapter(adapter);
     }
     private void filtrarDados(String texto) {
