@@ -33,7 +33,7 @@
             android:layout_marginTop="13dp"
             android:fontFamily="sans-serif"
             android:lineHeight="25dp"
-            android:text="HISTORICO AGENDAMENTO"
+            android:text="HISTORICO COMPRAS"
             android:textColor="@color/black_text"
             android:textFontWeight="500"
             android:textSize="23sp"
@@ -43,7 +43,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPedidos"
+        android:id="@+id/recyclerCompras"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="8dp"

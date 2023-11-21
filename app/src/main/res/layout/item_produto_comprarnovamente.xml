@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="4dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginStart="12dp">
+
+    <TextView
+        android:id="@+id/infos_item_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:lineHeight="20dp"
+        android:padding="8dp"
+        android:text="Itens da compra:"
+        android:textColor="@color/black"
+        android:textFontWeight="400"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_compras_produtos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/separetor"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:layerType="software"
+        app:layout_constraintTop_toBottomOf="@+id/store_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/dotted_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:id="@+id/btn_comprar_novamente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comprar novamente"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
+
+</LinearLayout>

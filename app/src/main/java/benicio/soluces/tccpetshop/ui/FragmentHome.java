@@ -31,7 +31,7 @@ public class FragmentHome extends BaseFragment<FragmentHomeBinding> implements
         if ( v.getItemId() == R.id.btn_explorer){
             fragment = new FragmentExplorer();
         }else if (v.getItemId() == R.id.btn_wish_list){
-            fragment = new FragmentWishlist();
+            fragment = new FragmentListagemHome();
         }else if (v.getItemId() == R.id.btn_carrinho){
             fragment = new FragmentCart();
         }else if ( v.getItemId() == R.id.btn_lojas_proximas){
@@ -40,7 +40,10 @@ public class FragmentHome extends BaseFragment<FragmentHomeBinding> implements
             fragment = new FragmentAgendamentos();
         }
 
-        inflateFragment(fragment);
+        if ( fragment != null){
+            inflateFragment(fragment);
+        }
+
         return false;
     }
 

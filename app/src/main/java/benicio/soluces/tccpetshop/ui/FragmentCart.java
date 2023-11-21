@@ -2,6 +2,7 @@ package benicio.soluces.tccpetshop.ui;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import benicio.soluces.tccpetshop.FinalizarCompraActivity;
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.adapter.AdapterProdutos;
 import benicio.soluces.tccpetshop.databinding.FragmentCartBinding;
@@ -29,7 +31,7 @@ import benicio.soluces.tccpetshop.utils.CarrinhoUtils;
 
 public class FragmentCart extends BaseFragment<FragmentCartBinding> {
 
-    DatabaseReference refProduct = FirebaseDatabase.getInstance().getReference().child("product_table");
+
     public FragmentCart() { super(R.layout.fragment_cart, FragmentCartBinding::bind);}
 
     List<ProductModel> produtos = new ArrayList<>();
@@ -53,59 +55,11 @@ public class FragmentCart extends BaseFragment<FragmentCartBinding> {
                 if ( produtos.isEmpty() ){
                     Toast.makeText(getContext(), "Nenhum produto selecionado!", Toast.LENGTH_SHORT).show();
                 }else{
-                    atualizarEstoqueProdutos();
-                    Toast.makeText(getContext(), "Carregando...", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), FinalizarCompraActivity.class));
                 }
             });
     }
 
-    private void atualizarEstoqueProdutos(){
-
-        refProduct.addListenerForSingleValueEvent(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if ( snapshot.exists() ){
-                    for ( DataSnapshot dado : snapshot.getChildren()){
-                        ProductModel productModel = dado.getValue(ProductModel.class);
-
-                        for ( ProductModel produtoCart : produtos){
-                            if ( produtoCart.getId() == productModel.getId()){
-                                int quantiVedida = productModel.getquantiVenda();
-                                quantiVedida++;
-                                int quantidadeEstoque = productModel.getQuanti();
-                                if ( quantidadeEstoque > 0){
-                                    quantidadeEstoque--;
-                                }
-
-                                productModel.setquantiVenda(
-                                       quantiVedida
-                                );
-
-                                productModel.setQuanti(
-                                        quantidadeEstoque
-                                );
-
-                                refProduct.child(productModel.getId() + "").setValue(productModel);
-                            }
-                        }
-                    }
-
-                    CarrinhoUtils.saveCarrinho(new ArrayList<>(), requireContext());
-                    produtos.clear();
-                    adapter.notifyDataSetChanged();
-                    getBinding().limparCarrinho.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), "Compra realizada com sucesso!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
     private void configurarRecyclerView(){
         r = getBinding().recylerCarrinho;
         r.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -115,5 +69,15 @@ public class FragmentCart extends BaseFragment<FragmentCartBinding> {
         if ( produtos.isEmpty()) { getBinding().limparCarrinho.setVisibility(View.GONE);}
         adapter = new AdapterProdutos(produtos, getContext(), true);
         r.setAdapter(adapter);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        produtos.clear();
+        produtos.addAll(CarrinhoUtils.returnCarrinho(requireContext()));
+        adapter.notifyDataSetChanged();
     }
 }
