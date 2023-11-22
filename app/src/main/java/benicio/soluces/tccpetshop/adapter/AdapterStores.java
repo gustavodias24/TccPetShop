@@ -40,7 +40,7 @@ public class AdapterStores extends RecyclerView.Adapter<AdapterStores.MyViewHold
 
         holder.infos.setText(
                 String.format(
-                        "%s\nRaio de distância: %dm", store.getNomeLoja(), store.getRaio()
+                        "%s\nRaio de distância: %dm\nAgenda:\n%s", store.getNomeLoja(), store.getRaio(), store.getAgenda()
                 )
         );
 

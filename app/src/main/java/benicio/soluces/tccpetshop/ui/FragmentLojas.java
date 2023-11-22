@@ -1,6 +1,8 @@
 package benicio.soluces.tccpetshop.ui;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.database.DatabaseUtils;
 import android.os.Bundle;
 
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,11 +34,13 @@ import benicio.soluces.tccpetshop.adapter.AdapterOrdes;
 import benicio.soluces.tccpetshop.adapter.AdapterStores;
 import benicio.soluces.tccpetshop.databinding.ActivityMainBinding;
 import benicio.soluces.tccpetshop.databinding.FragmentLojasBinding;
+import benicio.soluces.tccpetshop.databinding.LayoutFiltroLojaBinding;
 import benicio.soluces.tccpetshop.model.StoreModel;
 
 
 public class FragmentLojas extends Fragment {
 
+    Dialog d;
     DatabaseReference refStores = FirebaseDatabase.getInstance().getReference().child(DatabaseNameUtils.stores_table);
     List<StoreModel> stores = new ArrayList<>();
 
@@ -60,7 +65,12 @@ public class FragmentLojas extends Fragment {
                              Bundle savedInstanceState) {
         mainBinding = FragmentLojasBinding.inflate(getLayoutInflater());
 
-        refStores.addValueEventListener(new ValueEventListener() {
+        configurarAlertFiltro();
+        mainBinding.filtrar.setOnClickListener( view -> {
+            d.show();
+        });
+
+        refStores.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,7 +95,50 @@ public class FragmentLojas extends Fragment {
 
         return mainBinding.getRoot();
     }
+    private void configurarAlertFiltro(){
+        AlertDialog.Builder b = new AlertDialog.Builder(requireActivity());
+        b.setTitle("Filtrar lojas.");
+        b.setMessage("Digite o raio de distância que deseja encontrar lojas.");
+        LayoutFiltroLojaBinding bindingDialog = LayoutFiltroLojaBinding.inflate(getLayoutInflater());
 
+        bindingDialog.pronto.setOnClickListener( view -> {
+            Toast.makeText(requireActivity(), "Filtrando...", Toast.LENGTH_SHORT).show();
+            refStores.addListenerForSingleValueEvent(new ValueEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if ( snapshot.exists() ){
+                        configurarRecyclerLojas();
+
+                        stores.clear();
+
+                        for ( DataSnapshot dado : snapshot.getChildren()){
+                            if ( !bindingDialog.filtroEdt.getText().toString().isEmpty() ){
+                                 StoreModel storeModel = dado.getValue(StoreModel.class);
+                                int distanciaDesejada = Integer.parseInt(bindingDialog.filtroEdt.getText().toString());
+
+                                assert storeModel != null;
+                                if ( storeModel.getRaio() <= distanciaDesejada){
+                                    stores.add(storeModel);
+                                }
+                            }else {
+                                stores.add(dado.getValue(StoreModel.class));
+                            }
+                        }
+                        d.dismiss();
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
+        b.setView(bindingDialog.getRoot());
+        d = b.create();
+    }
     private void configurarRecyclerLojas(){
         r = mainBinding.recyclerLojas;
         r.setLayoutManager(new LinearLayoutManager(getContext()));
