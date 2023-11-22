@@ -78,7 +78,7 @@ public class FinalizarCompraActivity extends AppCompatActivity {
 
                         for ( ProductModel produtoCart : produtos){
                             if ( produtoCart.getId() == productModel.getId()){
-                                int quantiVedida = productModel.getquantiVenda();
+                                int quantiVedida = productModel.getQuantiVenda();
                                 quantiVedida++;
                                 int quantidadeEstoque = productModel.getQuanti();
                                 if ( quantidadeEstoque > 0){
@@ -87,7 +87,7 @@ public class FinalizarCompraActivity extends AppCompatActivity {
                                     Toast.makeText(FinalizarCompraActivity.this, "Não foi possível comprar " + produtoCart.getNome() + " por falta de estoque.", Toast.LENGTH_SHORT).show();
                                 }
 
-                                productModel.setquantiVenda(
+                                productModel.setQuantiVenda(
                                         quantiVedida
                                 );
 

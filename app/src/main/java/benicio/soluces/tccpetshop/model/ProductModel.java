@@ -1,7 +1,7 @@
 package benicio.soluces.tccpetshop.model;
 
 public class ProductModel {
-    String nome, imagem,categoria;
+    String nome, imagem,categoria, descricao;
     int id, lojaId;
     float valor;
     int quanti, quantiVenda;
@@ -9,14 +9,31 @@ public class ProductModel {
     public ProductModel() {
     }
 
-    public ProductModel(String nome, int lojaId, int id, String imagem, float valor, String categoria, int quanti, int quantiVenda) {
+    public ProductModel(String nome, String imagem, String categoria, String descricao, int id, int lojaId, float valor, int quanti, int quantiVenda) {
         this.nome = nome;
-        this.lojaId = lojaId;
-        this.id = id;
         this.imagem = imagem;
-        this.valor = valor;
         this.categoria = categoria;
+        this.descricao = descricao;
+        this.id = id;
+        this.lojaId = lojaId;
+        this.valor = valor;
         this.quanti = quanti;
+        this.quantiVenda = quantiVenda;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getQuantiVenda() {
+        return quantiVenda;
+    }
+
+    public void setQuantiVenda(int quantiVenda) {
         this.quantiVenda = quantiVenda;
     }
 
@@ -76,11 +93,13 @@ public class ProductModel {
         this.quanti = quanti;
     }
 
-    public int getquantiVenda() {
-        return quantiVenda;
-    }
-
-    public void setquantiVenda(int quantiVenda) {
-        this.quantiVenda = quantiVenda;
+    @Override
+    public String toString() {
+        return  "Nome:\n" + nome + "\n\n" +
+                "Categoria:\n" + categoria + "\n\n" +
+                "Descricao:\n" + descricao + "\n\n" +
+                "Valor:\nR$"+ valor +  "\n\n" +
+                "Estoque:\n" + quanti + "\n\n" +
+                "Quantidade vendida:\n" + quantiVenda;
     }
 }
