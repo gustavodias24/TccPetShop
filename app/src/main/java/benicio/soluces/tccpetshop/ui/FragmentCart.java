@@ -49,6 +49,7 @@ public class FragmentCart extends BaseFragment<FragmentCartBinding> {
                 produtos.clear();
                 adapter.notifyDataSetChanged();
                 binding.limparCarrinho.setVisibility(View.GONE);
+                calcularValorCarrinho();
             });
 
             binding.btnComprar.setOnClickListener( view -> {
@@ -65,10 +66,10 @@ public class FragmentCart extends BaseFragment<FragmentCartBinding> {
         r.setLayoutManager(new LinearLayoutManager(getContext()));
         r.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
-        produtos.addAll(CarrinhoUtils.returnCarrinho(requireContext()));
-        if ( produtos.isEmpty()) { getBinding().limparCarrinho.setVisibility(View.GONE);}
-        adapter = new AdapterProdutos(produtos, getContext(), true);
+        produtos.addAll(produtos);
+        adapter = new AdapterProdutos(produtos, getContext(), false, true, requireActivity());
         r.setAdapter(adapter);
+        empilharProduto();
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -77,7 +78,44 @@ public class FragmentCart extends BaseFragment<FragmentCartBinding> {
         super.onResume();
 
         produtos.clear();
-        produtos.addAll(CarrinhoUtils.returnCarrinho(requireContext()));
+        empilharProduto();
+        calcularValorCarrinho();
+        adapter.notifyDataSetChanged();
+    }
+
+    private void calcularValorCarrinho(){
+        float valorTotal = 0.0f;
+
+        for ( ProductModel produto : CarrinhoUtils.returnCarrinho(requireContext())){
+            valorTotal += produto.getValor();
+        }
+
+        getBinding().valorTotal.setText(
+                String.format("Valor Total: R$ %.2f", valorTotal));
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void empilharProduto(){
+        produtos.clear();
+        for ( ProductModel productModel : CarrinhoUtils.returnCarrinho(requireContext())){
+            if ( !produtos.isEmpty()){
+                boolean jaTem = false;
+                for ( ProductModel produtoListaAtual : produtos){
+                    if ( produtoListaAtual.getNome().equals(productModel.getNome())){
+                        produtoListaAtual.setQuantiadeComprada(
+                                produtoListaAtual.getQuantiadeComprada() + 1
+                        );
+                        jaTem = true;
+                    }
+                }
+                if ( !jaTem ){
+                    produtos.add(productModel);
+                }
+            }else{
+                produtos.add(productModel);
+            }
+        }
+        if ( produtos.isEmpty()) { getBinding().limparCarrinho.setVisibility(View.GONE);}
         adapter.notifyDataSetChanged();
     }
 }

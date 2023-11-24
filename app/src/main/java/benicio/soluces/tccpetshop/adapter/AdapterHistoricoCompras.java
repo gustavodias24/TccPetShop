@@ -48,7 +48,7 @@ public class AdapterHistoricoCompras extends RecyclerView.Adapter<AdapterHistori
         r.addItemDecoration(new DividerItemDecoration(c, DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
 
-        r.setAdapter(new AdapterProdutos(pedidoCompraModel.getProdutosComprados(), c, false));
+        r.setAdapter(new AdapterProdutos(pedidoCompraModel.getProdutosComprados(), c, false, false));
 
 
         holder.btnComprarNovamente.setOnClickListener( view -> {

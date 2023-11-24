@@ -120,9 +120,46 @@ public class FinalizarCompraActivity extends AppCompatActivity {
         r.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         r.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
-        produtos.addAll(CarrinhoUtils.returnCarrinho(getApplicationContext()));
-        adapter = new AdapterProdutos(produtos, getApplicationContext(), true);
+        adapter = new AdapterProdutos(produtos, getApplicationContext(), false, true);
+        calcularValorCarrinho();
         r.setAdapter(adapter);
+        empilharProduto();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void empilharProduto(){
+        produtos.clear();
+        for ( ProductModel productModel : CarrinhoUtils.returnCarrinho(getApplicationContext())){
+            if ( !produtos.isEmpty()){
+                boolean jaTem = false;
+                for ( ProductModel produtoListaAtual : produtos){
+                    if ( produtoListaAtual.getNome().equals(productModel.getNome())){
+                        produtoListaAtual.setQuantiadeComprada(
+                                produtoListaAtual.getQuantiadeComprada() + 1
+                        );
+                        jaTem = true;
+                    }
+                }
+                if ( !jaTem ){
+                    produtos.add(productModel);
+                }
+            }else{
+                produtos.add(productModel);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void calcularValorCarrinho(){
+        float valorTotal = 0.0f;
+
+        for ( ProductModel produto : CarrinhoUtils.returnCarrinho(getApplicationContext())){
+            valorTotal += produto.getValor();
+        }
+
+        binding.valorTotal.setText(
+                String.format("Valor Total: R$ %.2f", valorTotal));
     }
 
 

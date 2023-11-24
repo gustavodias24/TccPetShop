@@ -3,6 +3,8 @@ package benicio.soluces.tccpetshop.model;
 public class ProductModel {
     String nome, imagem,categoria, descricao;
     int id, lojaId;
+
+    int quantiadeComprada = 1;
     float valor;
     int quanti, quantiVenda;
 
@@ -19,6 +21,14 @@ public class ProductModel {
         this.valor = valor;
         this.quanti = quanti;
         this.quantiVenda = quantiVenda;
+    }
+
+    public int getQuantiadeComprada() {
+        return quantiadeComprada;
+    }
+
+    public void setQuantiadeComprada(int quantiadeComprada) {
+        this.quantiadeComprada = quantiadeComprada;
     }
 
     public String getDescricao() {
