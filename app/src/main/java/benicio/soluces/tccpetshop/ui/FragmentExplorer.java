@@ -24,20 +24,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import benicio.soluces.tccpetshop.DatabaseNameUtils;
 import benicio.soluces.tccpetshop.ExibirProdutoActivity;
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.adapter.AdapterProdutos;
 import benicio.soluces.tccpetshop.adapter.AdapterStores;
 import benicio.soluces.tccpetshop.databinding.FragmentExplorerBinding;
 import benicio.soluces.tccpetshop.model.ProductModel;
+import benicio.soluces.tccpetshop.model.StoreModel;
 
 
 public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> implements View.OnClickListener {
 
     DatabaseReference refProduct = FirebaseDatabase.getInstance().getReference().child("product_table");
+    DatabaseReference refStores = FirebaseDatabase.getInstance().getReference().child(DatabaseNameUtils.stores_table);
     List<ProductModel> produtos = new ArrayList<>();
+    List<StoreModel> stores = new ArrayList<>();
     AdapterProdutos adapter;
-    RecyclerView r;
+    AdapterStores adapterStore;
+    RecyclerView r, rStore;
+
     public FragmentExplorer() { super(R.layout.fragment_explorer, FragmentExplorerBinding::bind);}
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -46,6 +52,31 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> impl
 
         configurarRecyclerView();
         binding.imgAdvertising.setImageDrawable(getResources().getDrawable(R.drawable.propaganda));
+
+        configurarRecyclerLojas();
+
+        refStores.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if ( snapshot.exists() ){
+                    configurarRecyclerLojas();
+
+                    stores.clear();
+
+                    for ( DataSnapshot dado : snapshot.getChildren()){
+                        stores.add(dado.getValue(StoreModel.class));
+                    }
+
+                    adapterStore.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         binding.btnSearch.edtPesquisaProduto.addTextChangedListener(new TextWatcher() {
             @Override
@@ -162,5 +193,14 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> impl
         }
 
         startActivity(i);
+    }
+
+    private void configurarRecyclerLojas(){
+        rStore = getBinding().reyclerStorage;
+        rStore.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rStore.addItemDecoration(new DividerItemDecoration(  requireContext(), DividerItemDecoration.HORIZONTAL));
+        rStore.setHasFixedSize(true);
+        adapterStore = new AdapterStores(stores, getContext());
+        rStore.setAdapter(adapterStore);
     }
 }

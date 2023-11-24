@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -53,6 +54,13 @@ public class ExibirLojaActivity extends AppCompatActivity {
 
         binding.voltar.setOnClickListener( view -> finish());
 
+        binding.agendar.setOnClickListener( view -> {
+            Intent i = new Intent(getApplicationContext(), AgendamentoActivity.class);
+            if ( storeModel != null){
+                i.putExtra("estabelecimento", storeModel.getNomeLoja());
+            }
+            startActivity(i);
+        });
         refStores.child(b.getInt("id", 0) + "").get().addOnCompleteListener(task -> {
             if ( task.isSuccessful() ){
                 storeModel = task.getResult().getValue(StoreModel.class);

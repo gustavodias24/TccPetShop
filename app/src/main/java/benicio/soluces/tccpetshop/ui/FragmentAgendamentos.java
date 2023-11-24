@@ -53,28 +53,28 @@ public class FragmentAgendamentos extends Fragment {
 
         preferences = getActivity().getSharedPreferences("usuario", MODE_PRIVATE);
 
-        mainBinding.agendar.setOnClickListener( view -> {
-            String nomePet, estabelecimento, id, idClient, dataHora;
-
-            id = UUID.randomUUID().toString();
-            idClient = preferences.getString("idUsuario", "");
-            nomePet = mainBinding.edtNomePet.getText().toString();
-            estabelecimento = mainBinding.edtEstabelecimento.getText().toString();
-            dataHora = mainBinding.edtData.getText().toString();
-
-            refAgendaments.child(idClient).child(id).setValue(
-                    new AgendamentoModel(dataHora, id, idClient, nomePet, estabelecimento)
-            ).addOnCompleteListener(task -> {
-                if (task.isSuccessful()){
-                    mainBinding.edtNomePet.setText("");
-                    mainBinding.edtEstabelecimento.setText("");
-                    mainBinding.edtData.setText("");
-                    Toast.makeText(getActivity(), "Agendamento criado com sucesso!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getActivity(), "Problema de conexão", Toast.LENGTH_SHORT).show();
-                }
-            });
-        });
+//        mainBinding.agendar.setOnClickListener( view -> {
+//            String nomePet, estabelecimento, id, idClient, dataHora;
+//
+//            id = UUID.randomUUID().toString();
+//            idClient = preferences.getString("idUsuario", "");
+//            nomePet = mainBinding.edtNomePet.getText().toString();
+//            estabelecimento = mainBinding.edtEstabelecimento.getText().toString();
+//            dataHora = mainBinding.edtData.getText().toString();
+//
+//            refAgendaments.child(idClient).child(id).setValue(
+//                    new AgendamentoModel(dataHora, id, idClient, nomePet, estabelecimento)
+//            ).addOnCompleteListener(task -> {
+//                if (task.isSuccessful()){
+//                    mainBinding.edtNomePet.setText("");
+//                    mainBinding.edtEstabelecimento.setText("");
+//                    mainBinding.edtData.setText("");
+//                    Toast.makeText(getActivity(), "Agendamento criado com sucesso!", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    Toast.makeText(getActivity(), "Problema de conexão", Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//        });
         return mainBinding.getRoot();
     }
 }

@@ -38,7 +38,7 @@ public class FragmentWishlist extends BaseFragment<FragmentWishListBinding> impl
 
     @Override
     public void onBindCreated(FragmentWishListBinding binding) {
-        binding.btnBack.setOnClickListener(v -> popBackStack());
+//        binding.btnBack.setOnClickListener(v -> popBackStack());
         cconfigurarRecycler();
         preferences = getContext().getSharedPreferences("usuario", Context.MODE_PRIVATE);
     }

@@ -49,7 +49,7 @@ public class FragmentHistoricoCompras extends Fragment {
         super.onCreate(savedInstanceState);
         binding = FragmentHistoricoComprasBinding.inflate(getLayoutInflater());
         cconfigurarRecycler();
-        binding.btnBack.setOnClickListener(v -> popBackStack());
+//        binding.btnBack.setOnClickListener(v -> popBackStack());
         preferences = requireActivity().getSharedPreferences("usuario", MODE_PRIVATE);
 
         orderProduct.child(preferences.getString("idUsuario", "")).addValueEventListener(new ValueEventListener() {

@@ -95,20 +95,31 @@
         app:layout_constraintTop_toTopOf="@+id/cl_search"
         app:srcCompat="@drawable/propaganda" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Lojas"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_produtos"
+        android:id="@+id/reycler_storage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
+        android:orientation="horizontal"
         android:padding="8dp"
-        android:visibility="gone" />
+        android:visibility="visible" />" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutPopular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_popular_category"
@@ -347,5 +358,13 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_produtos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:visibility="gone" />
 
 </LinearLayout></ScrollView>
