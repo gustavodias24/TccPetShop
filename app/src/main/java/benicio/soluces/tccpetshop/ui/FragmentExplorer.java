@@ -90,9 +90,11 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> impl
 
                 if ( !charSequence.toString().isEmpty() ){
                     binding.recyclerProdutos.setVisibility(View.VISIBLE);
+                    binding.filtroText.setVisibility(View.VISIBLE);
                     binding.layoutPopular.setVisibility(View.GONE);
                 }else{
                     binding.recyclerProdutos.setVisibility(View.GONE);
+                    binding.filtroText.setVisibility(View.GONE);
                     binding.layoutPopular.setVisibility(View.VISIBLE);
                 }
             }
@@ -131,6 +133,7 @@ public class FragmentExplorer extends BaseFragment<FragmentExplorerBinding> impl
                         adapter.notifyDataSetChanged();
                         binding.layoutPopular.setVisibility(View.GONE);
                         binding.recyclerProdutos.setVisibility(View.VISIBLE);
+                        binding.filtroText.setVisibility(View.VISIBLE);
                     }
                 }
 

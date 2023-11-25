@@ -1,24 +1,26 @@
 package benicio.soluces.tccpetshop.ui;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import benicio.soluces.tccpetshop.R;
+import benicio.soluces.tccpetshop.adapter.AdapterHomePrincipal;
 import benicio.soluces.tccpetshop.databinding.FragmentHomeBinding;
 
 public class FragmentHome extends Fragment {
@@ -31,20 +33,36 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainBinding = FragmentHomeBinding.inflate(getLayoutInflater());
 
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                requireActivity().getSupportFragmentManager(), FragmentPagerItems.with(requireActivity())
-                .add("Explorer", FragmentExplorer.class)
-                .add("Histórico", FragmentListagemHome.class)
-                .add("Carrinho", FragmentCart.class)
-                .add("Lojas", FragmentLojas.class)
-                .add("Configurações", FragmentLojas.class)
-                .create());
+        ViewPager2 viewPager = mainBinding.viewPager;
+        TabLayout tabLayout = mainBinding.tabLayout;
 
-        ViewPager viewPager = (ViewPager) mainBinding.viewpager;
-        viewPager.setAdapter(adapter);
+        AdapterHomePrincipal viewPagerAdapter = new AdapterHomePrincipal(requireActivity());
+        viewPager.setAdapter(viewPagerAdapter);
 
-        SmartTabLayout viewPagerTab = (SmartTabLayout) mainBinding.viewpagertab;
-        viewPagerTab.setViewPager(viewPager);
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            switch (position) {
+                case 0:
+//                    tab.setText("Explorer");
+                    tab.setIcon(R.drawable.ic_search);
+                    break;
+                case 1:
+//                    tab.setText("Histórico");
+                    tab.setIcon(R.drawable.ic_wish_list);
+                    break;
+                case 2:
+//                    tab.setText("Carrinho");
+                    tab.setIcon(R.drawable.ic_shopping_cart);
+                    break;
+                case 3:
+//                    tab.setText("Lojas");
+                    tab.setIcon(R.drawable.baseline_add_home_work_24);
+                    break;
+                case 4:
+//                    tab.setText("Configurações");
+                    tab.setIcon(R.drawable.baseline_window_24);
+                    break;
+            }
+        }).attach();
 
         return mainBinding.getRoot();
     }
