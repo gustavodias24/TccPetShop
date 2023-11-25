@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
     implementation("com.ogaclejapan.smarttablayout:library:2.0.0@aar")
     implementation("com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")

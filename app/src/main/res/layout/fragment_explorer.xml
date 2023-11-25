@@ -12,77 +12,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_header_explorer"
+    <include
+        android:id="@+id/btn_search"
+        layout="@layout/search_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_welcome_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineHeight="25dp"
-            android:text="@string/welcome_message"
-            android:textColor="@color/black_text"
-            android:textFontWeight="500"
-            android:textSize="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineHeight="25dp"
-            android:text="@string/user_name"
-            android:textColor="@color/black_text"
-            android:textFontWeight="500"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_welcome_message" />
-
-        <ImageView
-            android:id="@+id/img_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_notification"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_header_explorer">
-
-        <include
-            android:id="@+id/btn_search"
-            layout="@layout/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_margin="8dp" />
 
     <ImageView
         android:id="@+id/img_advertising"
@@ -113,34 +48,28 @@
         android:padding="8dp"
         android:visibility="visible" />" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/tv_popular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="@string/popular_category"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <LinearLayout
         android:id="@+id/layoutPopular"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_popular_category"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_popular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:text="@string/popular_category"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_advertising" />
+            android:layout_height="wrap_content">
 
             <include
                 android:id="@+id/btn_popular_item_1"
@@ -171,6 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_popular" />
 
             <TextView
+                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/toys"
@@ -198,166 +128,163 @@
                 app:layout_constraintEnd_toEndOf="@+id/btn_popular_item_3"
                 app:layout_constraintStart_toStartOf="@+id/btn_popular_item_3"
                 app:layout_constraintTop_toBottomOf="@+id/btn_popular_item_3" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/cl_popular_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_popular_category">
 
             <LinearLayout
+                android:id="@+id/cl_popular_product"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|end"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView13">
 
-                <TextView
-                    android:id="@+id/popular_product_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/popular_product"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/see_all_popular_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="4dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="end"
-                    android:text="@string/see_all_popular_product"
-                    android:textColor="@color/red_cc0000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/popular_product_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popular_product"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/see_all_popular_product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/see_all_popular_product"
+                        android:textColor="@color/red_cc0000"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_1"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title" />
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_2"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="80dp" />
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_3"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="80dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_4"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="80dp" />
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_5"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="80dp" />
+
+                    <ImageView
+                        android:id="@+id/btn_popular_prod_6"
+                        layout="@layout/popular_medicine_product"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medicine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="80dp" />
+                </LinearLayout>
+
+
             </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_1"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title" />
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_2"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="80dp" />
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_3"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="80dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_4"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="80dp" />
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_5"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="80dp" />
-
-                <ImageView
-                    android:id="@+id/btn_popular_prod_6"
-                    layout="@layout/popular_medicine_product"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_medicine"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/popular_product_title"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:layout_editor_absoluteX="80dp" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/filtroText"

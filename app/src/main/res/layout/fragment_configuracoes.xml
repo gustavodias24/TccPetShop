@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".ui.ConfiguracoesFragment">
+
+        <Button
+            android:id="@+id/pefil_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="perfil usuário"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/perfil_pet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="perfil pet"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/add_ccc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="adicionar cartão"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/sair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sair da conta"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>

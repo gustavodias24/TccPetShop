@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import benicio.soluces.tccpetshop.ui.ConfiguracoesFragment;
 import benicio.soluces.tccpetshop.ui.FragmentCart;
 import benicio.soluces.tccpetshop.ui.FragmentExplorer;
 import benicio.soluces.tccpetshop.ui.FragmentListagemHome;
@@ -31,7 +32,7 @@ public class AdapterHomePrincipal extends FragmentStateAdapter {
             case 3:
                 return new FragmentLojas();
             case 4:
-                return new FragmentLojas();
+                return new ConfiguracoesFragment();
             default:
                 return null;
         }

@@ -1,7 +1,11 @@
 package benicio.soluces.tccpetshop.ui;
 
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +23,7 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
+import benicio.soluces.tccpetshop.CredenciamentoActivity;
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.adapter.AdapterHomePrincipal;
 import benicio.soluces.tccpetshop.databinding.FragmentHomeBinding;
@@ -33,8 +38,11 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainBinding = FragmentHomeBinding.inflate(getLayoutInflater());
 
+
         ViewPager2 viewPager = mainBinding.viewPager;
         TabLayout tabLayout = mainBinding.tabLayout;
+
+        viewPager.setUserInputEnabled(false);
 
         AdapterHomePrincipal viewPagerAdapter = new AdapterHomePrincipal(requireActivity());
         viewPager.setAdapter(viewPagerAdapter);
@@ -65,5 +73,16 @@ public class FragmentHome extends Fragment {
         }).attach();
 
         return mainBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getActivity().getSharedPreferences("usuario", MODE_PRIVATE);
+
+        if( preferences.getString("idUsuario", "").isEmpty()){
+            requireActivity().finish();
+            startActivity(new Intent(requireActivity(), CredenciamentoActivity.class));
+        }
     }
 }

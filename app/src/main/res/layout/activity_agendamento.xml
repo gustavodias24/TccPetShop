@@ -41,22 +41,24 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <EditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/edt_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="Data"
+            app:mask="##/##/####"
             android:inputType="datetime|date" />
 
-        <EditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/edt_hora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="Hora"
+            app:mask="##:##"
             android:inputType="datetime|time" />
 
 
