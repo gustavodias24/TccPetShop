@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        tools:context=".AdicionarCartaoActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_black_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Registrar cartão"
+                android:textColor="#090909"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="1. Tipo"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Tipo"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="2. Número do cartão"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Número do cartão"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="3. Código de segurança"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtCodigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Código de segurança"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="4. Data do vencimento"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+        <com.vicmikhailau.maskededittext.MaskedEditText
+            android:id="@+id/edtData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Data"
+            app:mask="##/##/####"
+            android:inputType="datetime|date" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:lineHeight="25dp"
+            android:text="5. Nome do cartão"
+            android:textColor="@color/black_text"
+            android:textFontWeight="500"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtNomeCartao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nome do cartão"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Cadastrar"
+            android:textAllCaps="true" />
+
+
+    </LinearLayout>
+
+</ScrollView>

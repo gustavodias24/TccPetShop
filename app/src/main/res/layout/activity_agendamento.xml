@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="8dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.FragmentAgendamentos">
 
         <LinearLayout
@@ -48,8 +55,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="Data"
-            app:mask="##/##/####"
-            android:inputType="datetime|date" />
+            android:inputType="datetime|date"
+            app:mask="##/##/####" />
 
         <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/edt_hora"
@@ -58,8 +65,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="Hora"
-            app:mask="##:##"
-            android:inputType="datetime|time" />
+            android:inputType="datetime|time"
+            app:mask="##:##" />
 
 
         <EditText
@@ -87,4 +94,4 @@
             android:text="Agendar" />
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

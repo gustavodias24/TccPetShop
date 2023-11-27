@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TccPetShop"
         tools:targetApi="31">
         <activity
+            android:name=".AdicionarCartaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".PerfilPetActivity"
             android:exported="false" />
         <activity

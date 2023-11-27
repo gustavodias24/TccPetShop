@@ -32,7 +32,7 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/add_ccc"
+            android:id="@+id/add_cc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="adicionar cartão"
