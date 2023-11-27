@@ -7,9 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import benicio.soluces.tccpetshop.adapter.AdapterCc;
 import benicio.soluces.tccpetshop.adapter.AdapterProdutos;
 import benicio.soluces.tccpetshop.databinding.ActivityFinalizarCompraBinding;
+import benicio.soluces.tccpetshop.model.CartaoModel;
 import benicio.soluces.tccpetshop.model.PedidoCompraModel;
 import benicio.soluces.tccpetshop.model.ProductModel;
 import benicio.soluces.tccpetshop.utils.CarrinhoUtils;
@@ -33,8 +38,15 @@ public class FinalizarCompraActivity extends AppCompatActivity {
     SharedPreferences preferences;
     DatabaseReference refProduct = FirebaseDatabase.getInstance().getReference().child("product_table");
     DatabaseReference orderProduct = FirebaseDatabase.getInstance().getReference().child("order_product_table");
+    DatabaseReference refCartao = FirebaseDatabase.getInstance().getReference().child("catao_table");
+
     private ActivityFinalizarCompraBinding binding;
     private RecyclerView r;
+    private RecyclerView rcc;
+    List<CartaoModel> ccs = new ArrayList<>();
+
+    AdapterCc adaptercc;
+
     List<ProductModel> produtos = new ArrayList<>();
     AdapterProdutos adapter;
 
@@ -54,6 +66,17 @@ public class FinalizarCompraActivity extends AppCompatActivity {
         });
 
         preferences = getSharedPreferences("usuario", MODE_PRIVATE);
+
+        binding.addCc.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AdicionarCartaoActivity.class)));
+
+        binding.grupoPagamento.setOnCheckedChangeListener((radioGroup, i) -> {
+            if ( i == 2131231197){
+                binding.layoutCartao.setVisibility(View.VISIBLE);
+            }else{binding.layoutCartao.setVisibility(View.GONE);}
+        });
+
+        configurarRecyclerViewCC();
+
     }
 
     private void criarRegistroPedido(){
@@ -124,6 +147,34 @@ public class FinalizarCompraActivity extends AppCompatActivity {
         calcularValorCarrinho();
         r.setAdapter(adapter);
         empilharProduto();
+    }
+
+    private void configurarRecyclerViewCC(){
+        rcc = binding.recyclerCartao;
+        rcc.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rcc.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+        rcc.setHasFixedSize(true);
+        adaptercc = new AdapterCc(ccs, getApplicationContext());
+        rcc.setAdapter(adaptercc);
+
+        refCartao.child(preferences.getString("idUsuario", "")).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if ( snapshot.exists() ){
+                    ccs.clear();
+                    for (DataSnapshot dado : snapshot.getChildren()){
+                        ccs.add(dado.getValue(CartaoModel.class));
+                    }
+                    adaptercc.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @SuppressLint("NotifyDataSetChanged")

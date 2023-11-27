@@ -141,6 +141,7 @@
         android:textStyle="bold" />
 
     <RadioGroup
+        android:id="@+id/grupo_pagamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -161,7 +162,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Boleto" />
+
     </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/layout_cartao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0"
+            android:text="Cartões de crédito."
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_cartao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/add_cc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adicionar novo cartão"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_compra_concluida"

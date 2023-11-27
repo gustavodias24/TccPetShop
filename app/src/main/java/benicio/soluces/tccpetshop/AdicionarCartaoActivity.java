@@ -38,6 +38,7 @@ public class AdicionarCartaoActivity extends AppCompatActivity {
             String idCartao = UUID.randomUUID().toString();
             cc.setId(idCartao);
             cc.setIdCliente(preferences.getString("idUsuario", ""));
+            cc.setTipo(mainBinding.edtTipo.getText().toString());
             cc.setNumeroCartao(mainBinding.edtNumero.getText().toString());
             cc.setCodigoSeguranca(mainBinding.edtCodigo.getText().toString());
             cc.setDataVencimento(mainBinding.edtData.getText().toString());

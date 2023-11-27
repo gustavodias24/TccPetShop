@@ -6,6 +6,16 @@ public class CartaoModel {
     public CartaoModel() {
     }
 
+    @Override
+    public String toString() {
+        return
+                "Tipo: " + tipo + '\n' +
+                "Número do cartão: " + numeroCartao + '\n' +
+                "Código de seguranca: " + codigoSeguranca + '\n' +
+                "Vencimento: " + dataVencimento + '\n' +
+                "Nome do cartão: " + nomeCartao ;
+    }
+
     public CartaoModel(String id, String idCliente, String tipo, String numeroCartao, String codigoSeguranca, String dataVencimento, String nomeCartao) {
         this.id = id;
         this.idCliente = idCliente;
