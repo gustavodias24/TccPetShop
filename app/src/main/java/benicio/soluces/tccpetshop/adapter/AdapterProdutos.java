@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import benicio.soluces.tccpetshop.ExibirLojaActivity;
+import benicio.soluces.tccpetshop.ExibirProdutoActivity;
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.databinding.LayoutEditarQtdProdutoBinding;
 import benicio.soluces.tccpetshop.model.ProductModel;
@@ -66,11 +69,15 @@ public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.myView
 
         if ( clicavel ){
             holder.itemView.getRootView().setOnClickListener( view -> {
-                Log.d("aquiaqui", "onBindViewHolder: " + "adicicado");
-                Toast.makeText(c, "Adicionado ao carrinho", Toast.LENGTH_LONG).show();
-                List<ProductModel> listaAntiga = CarrinhoUtils.returnCarrinho(c);
-                listaAntiga.add(productModel);
-                CarrinhoUtils.saveCarrinho(listaAntiga, c);
+                Intent i = new Intent(c, ExibirProdutoActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("id", productModel.getId());
+                c.startActivity(i);
+//                Log.d("aquiaqui", "onBindViewHolder: " + "adicicado");
+//                Toast.makeText(c, "Adicionado ao carrinho", Toast.LENGTH_LONG).show();
+//                List<ProductModel> listaAntiga = CarrinhoUtils.returnCarrinho(c);
+//                listaAntiga.add(productModel);
+//                CarrinhoUtils.saveCarrinho(listaAntiga, c);
             });
         }
 
