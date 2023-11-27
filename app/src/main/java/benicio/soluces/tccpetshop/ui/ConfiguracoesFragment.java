@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import benicio.soluces.tccpetshop.CredenciamentoActivity;
+import benicio.soluces.tccpetshop.PerfilPetActivity;
+import benicio.soluces.tccpetshop.PerfilUsuarioActivity;
 import benicio.soluces.tccpetshop.R;
 import benicio.soluces.tccpetshop.databinding.FragmentConfiguracoesBinding;
 
@@ -45,6 +47,9 @@ public class ConfiguracoesFragment extends Fragment {
             requireActivity().finish();
             startActivity(new Intent(requireActivity(), CredenciamentoActivity.class));
         });
+
+        mainBinding.pefilUsers.setOnClickListener( view -> startActivity(new Intent(requireContext(), PerfilUsuarioActivity.class)));
+        mainBinding.perfilPet.setOnClickListener( view -> startActivity(new Intent(requireContext(), PerfilPetActivity.class)));
 
         return mainBinding.getRoot();
     }
